@@ -7,9 +7,11 @@
 
 import SwiftUI
 
+
 struct SubmitButton: View {
     @Environment(Alphabetizer.self) private var alphabetizer
-    
+
+
     var body: some View {
         Button {
             alphabetizer.submit()
@@ -23,8 +25,15 @@ struct SubmitButton: View {
                     .fill(Color.purple)
                 )
         }
+        .disabled(!isEnabled)
+    }
+
+
+    var isEnabled: Bool {
+        alphabetizer.message == .instructions
     }
 }
+
 
 #Preview {
     SubmitButton()
